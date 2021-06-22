@@ -18,24 +18,24 @@
 
 
 import re
-from builtins import object    # pylint: disable=redefined-builtin
+from builtins import object  # pylint: disable=redefined-builtin
 
 
 class CopyableRegexObject(object):
-  """Like a re.RegexObject, but can be copied."""
+    """Like a re.RegexObject, but can be copied."""
 
-  def __init__(self, pattern):
-    self.pattern = pattern
-    self.regex = re.compile(pattern)
+    def __init__(self, pattern):
+        self.pattern = pattern
+        self.regex = re.compile(pattern)
 
-  def match(self, *args, **kwargs):
-    return self.regex.match(*args, **kwargs)
+    def match(self, *args, **kwargs):
+        return self.regex.match(*args, **kwargs)
 
-  def sub(self, *args, **kwargs):
-    return self.regex.sub(*args, **kwargs)
+    def sub(self, *args, **kwargs):
+        return self.regex.sub(*args, **kwargs)
 
-  def __copy__(self):
-    return CopyableRegexObject(self.pattern)
+    def __copy__(self):
+        return CopyableRegexObject(self.pattern)
 
-  def __deepcopy__(self, unused_memo):
-    return self.__copy__()
+    def __deepcopy__(self, unused_memo):
+        return self.__copy__()

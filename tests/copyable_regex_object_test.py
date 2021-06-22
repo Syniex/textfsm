@@ -16,10 +16,7 @@
 
 """Tests for copyable_regex_object."""
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import copy
 import unittest
@@ -28,15 +25,14 @@ from textfsm import copyable_regex_object
 
 
 class CopyableRegexObjectTest(unittest.TestCase):
+    def testCopyableRegexObject(self):
+        obj1 = copyable_regex_object.CopyableRegexObject("fo*")
+        self.assertTrue(obj1.match("foooo"))
+        self.assertFalse(obj1.match("bar"))
+        obj2 = copy.copy(obj1)
+        self.assertTrue(obj2.match("foooo"))
+        self.assertFalse(obj2.match("bar"))
 
-  def testCopyableRegexObject(self):
-    obj1 = copyable_regex_object.CopyableRegexObject('fo*')
-    self.assertTrue(obj1.match('foooo'))
-    self.assertFalse(obj1.match('bar'))
-    obj2 = copy.copy(obj1)
-    self.assertTrue(obj2.match('foooo'))
-    self.assertFalse(obj2.match('bar'))
 
-
-if __name__ == '__main__':
-  unittest.main()
+if __name__ == "__main__":
+    unittest.main()

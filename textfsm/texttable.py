@@ -23,18 +23,9 @@ Tables can be created from CSV input and in-turn supports a number of display
 formats such as CSV and variable sized and justified rows.
 """
 
-from __future__ import absolute_import, division, print_function, unicode_literals
-
 import copy
 import textwrap
-from builtins import next  # pylint: disable=redefined-builtin
-from builtins import object  # pylint: disable=redefined-builtin
-from builtins import range  # pylint: disable=redefined-builtin
-from builtins import str  # pylint: disable=redefined-builtin
-from builtins import zip  # pylint: disable=redefined-builtin
 from functools import cmp_to_key
-
-import six
 
 from textfsm import terminal
 
@@ -1041,7 +1032,7 @@ class TextTable(object):
             line = buf.readline()
             header_str = ""
             while not header_str:
-                if not isinstance(line, six.string_types):
+                if not isinstance(line, str):
                     line = line.decode("utf-8")
                 # Remove comments.
                 header_str = line.split("#")[0].strip()
@@ -1062,7 +1053,7 @@ class TextTable(object):
 
         # xreadlines would be better but not supported by StringIO for testing.
         for line in buf:
-            if not isinstance(line, six.string_types):
+            if not isinstance(line, str):
                 line = line.decode("utf-8")
             # Support commented lines, provide '#' is first character of line.
             if line.startswith("#"):

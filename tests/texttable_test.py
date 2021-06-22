@@ -16,8 +16,6 @@
 
 """Unittest for text table."""
 
-from __future__ import absolute_import, division, print_function, unicode_literals
-
 import unittest
 from builtins import range
 from io import StringIO

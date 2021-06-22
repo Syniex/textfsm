@@ -32,6 +32,7 @@ with open(path.join(here, "README.md"), encoding="utf8") as f:
 
 setup(
     name="textfsm",
+    python_requires=">=3.6",
     maintainer="Google",
     maintainer_email="textfsm-dev@googlegroups.com",
     version=textfsm.__version__,
@@ -45,7 +46,6 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Libraries",
     ],
@@ -53,5 +53,5 @@ setup(
     entry_points={"console_scripts": ["textfsm=textfsm.parser:main"]},
     include_package_data=True,
     package_data={"textfsm": ["../testdata/*"]},
-    install_requires=["six", "future"],
+    install_requires=[],
 )

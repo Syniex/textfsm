@@ -24,18 +24,12 @@ A simple template language is used to describe a state machine to
 parse a specific type of text input, returning a record of values
 for each input entity.
 """
-from __future__ import absolute_import, division, print_function, unicode_literals
 
 import getopt
 import inspect
 import re
 import string
 import sys
-from builtins import object  # pylint: disable=redefined-builtin
-from builtins import str  # pylint: disable=redefined-builtin
-from builtins import zip  # pylint: disable=redefined-builtin
-
-import six
 
 
 class Error(Exception):
@@ -720,7 +714,7 @@ class TextFSM(object):
             # Blank line signifies end of Value definitions.
             if not line:
                 return
-            if not isinstance(line, six.string_types):
+            if not isinstance(line, str):
                 line = line.decode("utf-8")
             # Skip commented lines.
             if self.comment_regex.match(line):
@@ -793,7 +787,7 @@ class TextFSM(object):
         for line in template:
             self._line_num += 1
             line = line.rstrip()
-            if not isinstance(line, six.string_types):
+            if not isinstance(line, str):
                 line = line.decode("utf-8")
             # First line is state definition
             if line and not self.comment_regex.match(line):
@@ -825,7 +819,7 @@ class TextFSM(object):
             # Finish rules processing on blank line.
             if not line:
                 break
-            if not isinstance(line, six.string_types):
+            if not isinstance(line, str):
                 line = line.decode("utf-8")
             if self.comment_regex.match(line):
                 continue
